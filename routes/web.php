@@ -77,7 +77,7 @@ Route::get('unitscategories', [App\Http\Controllers\UnitcategoryController::clas
 Route::post('unitcat/add', [App\Http\Controllers\UnitcategoryController::class, 'store'])->name('add.unitcat');
 
 //Client
-Route::namespace('App\Http\Controllers\Client')->prefix('client')->name('client.')->middleware('can:client')->group(function (){
+Route::namespace('App\Http\Controllers\Client')->prefix('client')->name('client.')->middleware('can:client','verified')->group(function (){
     Route::get('messages', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('messages/create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     Route::post('messages/store', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -100,7 +100,7 @@ Route::namespace('App\Http\Controllers\Client')->prefix('client')->name('client.
 
 
 //Tenant
-Route::namespace('App\Http\Controllers\Tenant')->prefix('tenant')->name('tenant.')->middleware('can:tenant')->group(function (){
+Route::namespace('App\Http\Controllers\Tenant')->prefix('tenant')->name('tenant.')->middleware('can:tenant','verified')->group(function (){
     Route::get('messages', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('messages/create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     Route::post('messages/store', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -119,7 +119,7 @@ Route::namespace('App\Http\Controllers\Tenant')->prefix('tenant')->name('tenant.
 });
 
 //SeniorPM
-Route::namespace('App\Http\Controllers\SPM')->prefix('spm')->name('spm.')->middleware('can:senior-property-manager')->group(function (){
+Route::namespace('App\Http\Controllers\SPM')->prefix('spm')->name('spm.')->middleware('can:senior-property-manager','verified')->group(function (){
     Route::get('messages', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('messages/create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     Route::post('messages/store', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -143,12 +143,12 @@ Route::namespace('App\Http\Controllers\SPM')->prefix('spm')->name('spm.')->middl
 });
 
 //PM
-Route::namespace('App\Http\Controllers\PM')->prefix('pm')->name('pm.')->middleware('can:property-manager')->group(function (){
+Route::namespace('App\Http\Controllers\PM')->prefix('pm')->name('pm.')->middleware('can:property-manager','verified')->group(function (){
     Route::resource('home','HomeController');
 });
 
 //FM
-Route::namespace('App\Http\Controllers\FM')->prefix('fm')->name('fm.')->middleware('can:facility-manager')->group(function (){
+Route::namespace('App\Http\Controllers\FM')->prefix('fm')->name('fm.')->middleware('can:facility-manager','verified')->group(function (){
     Route::get('messages', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('messages/create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     Route::post('messages/store', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -171,17 +171,17 @@ Route::namespace('App\Http\Controllers\FM')->prefix('fm')->name('fm.')->middlewa
 });
 
 //Accountant
-Route::namespace('App\Http\Controllers\Accountant')->prefix('act')->name('act.')->middleware('can:accountant')->group(function (){
+Route::namespace('App\Http\Controllers\Accountant')->prefix('act')->name('act.')->middleware('can:accountant','verified')->group(function (){
     Route::resource('home','HomeController');
 });
 
 //CEO
-Route::namespace('App\Http\Controllers\CEO')->prefix('ceo')->name('ceo.')->middleware('can:ceo')->group(function (){
+Route::namespace('App\Http\Controllers\CEO')->prefix('ceo')->name('ceo.')->middleware('can:ceo','verified')->group(function (){
     Route::resource('home','HomeController');
 });
 
 
 //Superadmin
-Route::namespace('App\Http\Controllers\Superadmin')->prefix('superadmin')->name('superadmin.')->middleware('can:superadmin')->group(function (){
+Route::namespace('App\Http\Controllers\Superadmin')->prefix('superadmin')->name('superadmin.')->middleware('can:superadmin','verified')->group(function (){
     Route::resource('home','HomeController');
 });

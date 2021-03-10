@@ -73,6 +73,7 @@ class EnquiryController extends Controller
         $enquiry = new Enquiry();
         $enquiry->user_id = auth()->user()->id;
         $enquiry->title = $request->title;
+        $enquiry->category = $request->category;
         $enquiry->body = $request->body;
         $enquiry->save();
         return back()->with('success','Enquiry submitted successfully');
@@ -87,6 +88,7 @@ class EnquiryController extends Controller
     public function comment_store(Request $request)
     {
         $complain = new EnquiryComment();
+        $complain->user_id = auth()->user()->id;
         $complain->enquiry_id = $request->id;
         $complain->comment = $request->comment;
         $complain->save();

@@ -19,6 +19,20 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Category</label>
+                        <div class="form-group">
+                            <select name="category" id="category" class="form-control">
+                                <option value="Facility">Facility</option>
+                                <option value="Services">Services</option>
+                                <option value="Privacy">Privacy</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="Security">Security</option>
+                                <option value="Billing">Billing</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>What's your enquiry?</label>
                         <div class="form-group">
                             <textarea class="form-control" rows="5" name="body"></textarea>
@@ -32,6 +46,7 @@
                     <table class="table table-hover">
                         <thead class="text-warning">
                         <th>Title</th>
+                        <th>Category</th>
                         <th>Body</th>
                         <th>Action</th>
                         </thead>
@@ -39,6 +54,7 @@
                         @forelse($enquiries as $notice)
                             <tr>
                                 <td>{{ $notice->title }}</td>
+                                <td>{{ $notice->category }}</td>
                                 <td>
                                     {{ $notice->body }}
                                 </td>

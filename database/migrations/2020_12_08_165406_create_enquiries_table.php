@@ -17,6 +17,7 @@ class CreateEnquiriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('title');
+            $table->string('category');
             $table->text('body');
             $table->timestamps();
 

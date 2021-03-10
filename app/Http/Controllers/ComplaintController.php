@@ -70,6 +70,7 @@ class ComplaintController extends Controller
         $complain = new Complaint();
         $complain->user_id = auth()->user()->id;
         $complain->title = $request->title;
+        $complain->category = $request->category;
         $complain->body = $request->body;
         $complain->status = 'Open';
         $complain->save();
@@ -86,6 +87,7 @@ class ComplaintController extends Controller
     {
         $complain = new ComplaintComment();
         $complain->complaint_id = $request->id;
+        $complain->user_id = auth()->user()->id;
         $complain->comment = $request->comment;
         $complain->save();
         return back()->with('success','Comment made successfully');

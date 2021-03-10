@@ -19,6 +19,20 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Category</label>
+                        <div class="form-group">
+                            <select name="category" id="category" class="form-control">
+                                <option value="Facility">Facility</option>
+                                <option value="Services">Services</option>
+                                <option value="Privacy">Privacy</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="Security">Security</option>
+                                <option value="Billing">Billing</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>What's your complain?</label>
                         <div class="form-group">
                             <textarea class="form-control" rows="5" name="body"></textarea>
